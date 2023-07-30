@@ -1,5 +1,15 @@
 import SingleItem from './SingleItem';
+import { useQuery } from '@tanstack/react-query';
+import customFetch from './utils';
+
+
 const Items = ({ items }) => {
+  
+  const result = useQuery({
+    queryKey: [],
+    queryFn: () => customFetch.get()
+  })
+  
   return (
     <div className='items'>
       {items.map((item) => {
