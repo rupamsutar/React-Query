@@ -7,8 +7,10 @@ const Items = ({ items }) => {
   
   const result = useQuery({
     queryKey: [],
-    queryFn: () => customFetch.get()
-  })
+    queryFn: () => customFetch.get('/')
+  });
+
+    console.log(result);
   
   return (
     <div className='items'>
