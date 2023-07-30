@@ -5,16 +5,24 @@ import customFetch from './utils';
 
 const Items = ({ items }) => {
   
-  const {isLoading, data} = useQuery({
+  const {isLoading, data, isError, error} = useQuery({
     queryKey: [],
     queryFn: async() => {
-      const {data} = await customFetch.get('/');
+      const {data} = await customFetch.get('/new');
       return data;
     }
   });
 
   if (isLoading) {
     return <p style={{marginTop: '1rem'}}>Loading...</p>
+  }
+
+  // if (isError) {
+  //   return <p style={{marginTop: '1rem'}}>There was an error</p>
+  // }
+
+  if(error) {
+    return <p style={{marginTop: 'rem'}}>{error.message}</p>
   }
 
   
